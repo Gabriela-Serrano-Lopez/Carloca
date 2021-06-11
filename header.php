@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<meta charset="utf-8">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<script src="../js/jquery-1.12.4-jquery.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/5d4588f949.js" crossorigin="anonymous"></script>
 </head>
-<body style="background-color: bisque;">
-
-<nav class="navbar navbar-inverse" style=" background-color: #2e0116;">
+<nav class="navbar navbar-inverse" style="background-color: #2e0116;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Carloca's</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#Inicio">Carlica's</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class=""><a href="#">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="usuario.php">Orden<span class="caret"></span></a> 
-      </li>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="../cerrar_sesion.php"><i class="fas fa-power-off"></i> Salir</li>
-      
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li ><a href="usuarios_portada.php" id="Inicio">Inicio</a></li>
+         <li><a href="mas.php">Mas</a></li>
+        <li><a href="#">Orden </a></li>
+      </ul>
+     
+      <ul class="nav navbar-nav navbar-right">
+</li>
+        <li><a href="../cerrar_sesion.php"><i class="fas fa-power-off"></i> Salir</a></li>
+       
+      </ul>
+    </div>
   </div>
 </nav>
-</body>
-  

@@ -32,7 +32,7 @@ if(isset($_SESSION["cajero_login"]))	//Condicion personal
 }
 if(isset($_SESSION["usuarios_login"]))	//Condicion Usuarios
 {
-	header("location: usuarios/usuario.php");
+	header("location: usuarios/usuarios_portada.php");
 }
 
 if(isset($_REQUEST['btn_login']))	
@@ -91,12 +91,12 @@ if(isset($_REQUEST['btn_login']))
 							case "3":
 								$_SESSION["cajero_login"]=$email;				
 								$loginMsg="Usuario: Inicio sesión con éxito";	
-								header("refresh:3;usuarios/usuario.php");		
+								header("refresh:3;usuarios/usuarios_portada");		
 								break;
 							case "4":
 									$_SESSION["usuarios_login"]=$email;				
 									$loginMsg="Usuario: Inicio sesión con éxito";	
-									header("refresh:3;usuarios/usuario.php");		
+									header("refresh:3;usuarios/usuarios_portada.php");		
 									break;
 								
 							default:

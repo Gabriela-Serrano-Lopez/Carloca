@@ -1,7 +1,27 @@
 
 .navbar{
     background-color: #2e0116;
+    margin-top: 0px;
 }
 body{
-    background-color: bisque;
+    background-image: url('../img/fondo.jpg');
+    background-size:cover;
+
+    
+}
+
+h1{
+    margin: 100px;
+    text-align: center;
+}
+.col-md-3{
+    margin-top: 20px;
+  margin:20px ;
+ 
+}
+.img-responsive{
+   width:  100%;
+}
+.panel-default{
+    height: 500%;
 }

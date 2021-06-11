@@ -8,10 +8,10 @@
 <!-- JavaScript Bundle with Popper -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/5d4588f949.js" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
-<script src="https://kit.fontawesome.com/5d4588f949.js" crossorigin="anonymous"></script>
 <div class="sidebar-container" style="width:200px">
   <div class="sidebar-logo">
     Carloca's <br>
@@ -39,7 +39,7 @@
 
 				if(isset($_SESSION['usuarios_login']))	
 				{
-					header("location: ../usuarios/usuario.php");
+					header("location: ../usuarios/usuarios_portada.php");
 				}
 				
 				if(isset($_SESSION['admin_login']))
@@ -75,7 +75,7 @@
     <i class="fa fa-caret-down fa-sm"></i>
   </button>
   <div class="dropdown-container">
-    <a href="lista_usuario.php">Usuarios</a>
+    <a href="lista_usuarios_portada.php">Usuarios</a>
     <a href="#">Productos</a>
   </div>
     </li>

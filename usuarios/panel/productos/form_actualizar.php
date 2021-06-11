@@ -4,7 +4,7 @@
   if(isset($_GET['id']) && is_numeric($_GET['id'])){
       $id = $_GET['id'];
     
-      $producto = new Kawschool\producto;
+      $producto = new Kawschool\Producto;
       $resultado = $producto->mostrarPorId($id);
 
       if(!$resultado)

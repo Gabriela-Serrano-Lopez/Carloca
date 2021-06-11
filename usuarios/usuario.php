@@ -42,13 +42,13 @@
 					header("location: ../usuarios/usuario.php");
 				}
 				
-				if(isset($_SESSION['admin_login']))
+				if(isset($_SESSION['usuarios_login']))
 				{
 				?>
         <br><br>
 					Bienvenido,
 				<?php
-						echo $_SESSION['admin_login'];
+						echo $_SESSION['usuario_login'];
 				}
 				?>
 				</h5>

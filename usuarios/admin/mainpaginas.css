@@ -1,0 +1,26 @@
+.titulo{
+    text-align: center;
+    align-items: center;
+    
+}
+
+.content-container .container-fluid .wrapper .container{
+text-align: center;
+align-items: center;
+
+
+}
+
+td, th ,table{
+    text-align: center;
+    font-size: 15px;
+   
+}
+
+.calendar-day, .calendar-day-head{
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+.calendar-day-head{
+    background: #ddd;
+}

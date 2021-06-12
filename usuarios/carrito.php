@@ -46,36 +46,14 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kawschool Store</title>
+    <title>Carloca's</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/estilos.css">
   </head>
-
+<?php include ("../header.php")?>
   <body>
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">Kawschool Store</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav pull-right">
-            <li>
-              <a href="" class="btn">CARRITO <span class="badge"><?php print cantidadProductos(); ?></span></a>
-            </li> 
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
 
     <div class="container" id="main">
             <table class="table table-bordered table-hover">
@@ -112,13 +90,13 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
                                         <img src="assets/imagenes/not-found.jpg" width="35">
                                     <?php }?>
                                 </td>
-                                <td><?php print $value['precio']  ?> PEN</td>
+                                <td><?php print "$ " .$value['precio']  ?></td>
                                 <td>
                                 <input type="hidden" name="id"  value="<?php print $value['id'] ?>">
                                     <input type="text" name="cantidad" class="form-control u-size-100" value="<?php print $value['cantidad'] ?>">
                                 </td>
                                 <td>
-                                    <?php print $total  ?> PEN
+                                    <?php print "$ " . $total .".00"  ?> 
                                 </td>
                                 <td>
                                     <button type="submit" class="btn btn-success btn-xs">
@@ -149,7 +127,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
                 <tfoot>
                         <tr>
                             <td colspan="5" class="text-right">Total</td>
-                            <td><?php print calcularTotal(); ?> PEN</td>
+                            <td><?php print "$ " . calcularTotal() .".00 "; ?> </td>
                             <td></td>
                         </tr>
 
@@ -161,10 +139,10 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
             ?>  
             <div class="row">
                     <div class="pull-left">
-                        <a href="index.php" class="btn btn-info">Seguir Comprando</a>
+                        <a href="usuarios_portada.php" class="btn btn-info">Seguir Ordenando</a>
                     </div>
                     <div class="pull-right">
-                        <a href="finalizar.php" class="btn btn-success">Finalizar Compra</a>
+                        <a href="finalizar.php" class="btn btn-success">Finalizar Orden </a>
                     </div>
             </div>
 

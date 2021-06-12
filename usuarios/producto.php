@@ -2,6 +2,11 @@
 session_start();
 require 'funciones.php';
 ?>
+<style>
+  .titulo-producto{
+font-size: 15px;
+}
+</style>
 <body>
   
  <h1> MENU</h1>
@@ -16,7 +21,7 @@ require 'funciones.php';
                 for($x =0; $x < $cantidad; $x++){
                   $item = $info_productos[$x];
             ?>
-              <div class="col-md-3">
+              <div class="col-sm-4">
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4 class="text-center titulo-producto"><?php print $item['titulo'] ?></h4>  
@@ -36,7 +41,7 @@ require 'funciones.php';
                     <div class="panel-footer">
                     <p><?php print $item['descripcion'] ?></p>
                         <a href="carrito.php?id=<?php print $item['id'] ?>" class="btn btn-success btn-block">
-                          <span class="glyphicon glyphicon-shopping-cart"></span> Comprar
+                      Ordemar
                         </a>
                     </div>
                   </div>

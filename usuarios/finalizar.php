@@ -1,79 +1,129 @@
+<?php
+//ACTIVAR LAS SESSIONES EN PHP
+session_start();
+require 'funciones.php';
 
-    <title>Kawschool Store</title>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/estilos.css">
-</head>
-
-<body>
-
-<!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.php">Kawschool Store</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav pull-right">
-        <li>
-          <a href="carrito.php" class="btn">CARRITO <span class="badge"><?php print cantidadProductos(); ?></span></a>
-        </li> 
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
-
-<div class="container" id="main">
-    <div class="main-form">
-        <div class="row">
-            <div class="col-md-12">
-                <fieldset>
-                    <legend>Completar Datos</legend>
-                        <form action="completar_pedido.php" method="post">
-                            <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control" name="nombre" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Apellidos</label>
-                                <input type="text" class="form-control" name="apellidos" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Correo</label>
-                                <input type="email" class="form-control" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Teléfono</label>
-                                <input type="text" class="form-control" name="telefono" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Comentario</label>
-                                <textarea name="comentario" class="form-control"  rows="4"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                        </form>
-                </fieldset>
-            </div>
-        </div>
-    </div>
+if(isset($_GET['id']) && is_numeric($_GET['id'])){
+    $id = $_GET['id'];
+    require 'vendor/autoload.php';
+    $producto = new Kawschool\Producto;
+    $resultado = $producto->mostrarPorId($id);
     
-  
+    if(!$resultado)
+       header('Location: index.php');
 
-</div> <!-- /container -->
+       
+
+    if(isset($_SESSION['carrito'])){ //SI EL CARRITO EXISTE
+        //SI EL Producto EXISTE EN EL CARRITO
+        if(array_key_exists($id,$_SESSION['carrito'])){
+            actualizarProducto($id);
+        }else{
+            //  SI EL CARRITO NO EXISTE EN EL CARRITO
+            agregarProducto($resultado, $id);
+        }
+
+    }else{
+        //  SI EL CARRITO NO EXISTE
+        agregarProducto($resultado, $id);
+
+    }
+
+   
+
+}  
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
 
-</body>
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Carloca's</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+  </head>
+<?php include ("../header.php")?>
+  <body>
+
+    <div class="container" id="main">
+    <div class="panel-heading" style="text-align: center;; background-color:#9DEBD1 ">
+                      <br>   <h1> Orden </h1>
+                            <br>
+                            <br>
+                        </div>
+            <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Producto</th>
+                      <th>Foto</th>
+                      <th>Precio</th>
+                      <th>Cantidad</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <?php
+                        if(isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])){
+                            $c=0;
+                            foreach($_SESSION['carrito'] as $indice => $value){
+                                $c++;
+                                $total = $value['precio'] * $value['cantidad'];
+                      ?>
+                        <tr>
+                            <form action="actualizar_carrito.php" method="post">
+                                <td><?php print $c ?></td>
+                                <td><?php print $value['titulo']  ?></td>
+                                <td>
+                                    <?php
+                                        $foto = 'upload/'.$value['foto'];
+                                        if(file_exists($foto)){
+                                        ?>
+                                        <img src="<?php print $foto; ?>" width="35">
+                                    <?php }else{?>
+                                        <img src="assets/imagenes/not-found.jpg" width="35">
+                                    <?php }?>
+                                </td>
+                                <td><?php print "$ " .$value['precio']  ?></td>
+                                <td><?php print $value['id'] ?></td>
+                                <td><?php print "$ " . $total .".00"?></td>
+                            </form>
+                        </tr>
+
+                    <?php
+                            }}
+                    ?>
+ 
+                <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-right">Total</td>
+                            <td><?php print "$ " . calcularTotal() .".00 "; ?> </td>
+                           
+                        </tr>
+
+                </tfoot>
+            </table>
+            <hr>
+            
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+  </body>
 </html>

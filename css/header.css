@@ -13,12 +13,9 @@ body{
 h1{
     margin: 100px;
     text-align: center;
+    
 }
-.col-md-3{
-    margin-top: 20px;
-  margin:20px ;
- 
-}
+
 .img-responsive{
    width:  100%;
 }

@@ -6,7 +6,6 @@
 <script src="../js/jquery-1.12.4-jquery.min.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
 <script src="https://kit.fontawesome.com/5d4588f949.js" crossorigin="anonymous"></script>
 </head>
 <nav class="navbar navbar-inverse" style="background-color: #2e0116;">
@@ -23,7 +22,7 @@
       <ul class="nav navbar-nav">
         <li ><a href="usuarios_portada.php" id="Inicio">Inicio</a></li>
          <li><a href="mas.php">Mas</a></li>
-        <li><a href="#">Orden </a></li>
+        <li><a href="carrito.php">Orden </a></li>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
